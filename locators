@@ -49,3 +49,4 @@ class PersonalAccountLocators:
 class ForgotPasswordPageLocators:
     # Кнопка «Войти» на странице восстановления пароля
     LOGIN_BUTTON = (By.XPATH, "//a[text()='Войти']")
+ 
