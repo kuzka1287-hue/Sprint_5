@@ -35,3 +35,4 @@ class ConstructorLocators:
     BUN_SECTION = (By.XPATH, "//h2[text()='Булки']/..")
     SAUCE_SECTION = (By.XPATH, "//h2[text()='Соусы']/..")
     FILLING_SECTION = (By.XPATH, "//h2[text()='Начинки']/..")
+ 
