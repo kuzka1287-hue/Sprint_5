@@ -41,4 +41,4 @@ class TestRegistration:
             EC.visibility_of_element_located(RegisterPageLocators.PASSWORD_ERROR)
         )
         assert error.is_displayed()
- 
+  
