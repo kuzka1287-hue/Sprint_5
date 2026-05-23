@@ -47,4 +47,4 @@ class TestPersonalAccount:
         driver.find_element(*PersonalAccountLocators.LOGOUT_BUTTON).click()
         # После выхода появляется кнопка «Войти»
         WebDriverWait(driver, 3).until(EC.visibility_of_element_located(MainPageLocators.LOGIN_BUTTON_MAIN))
-        assert driver.find_element(*MainPageLocators.LOGIN_BUTTON_MAIN).is_displayed() 
+        assert driver.find_element(*MainPageLocators.LOGIN_BUTTON_MAIN).is_displayed()  
