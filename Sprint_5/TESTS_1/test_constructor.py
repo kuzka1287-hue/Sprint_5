@@ -24,4 +24,4 @@ class TestConstructor:
         driver.find_element(*MainPageLocators.FILLINGS_TAB).click()
         active_tab = driver.find_element(*MainPageLocators.ACTIVE_TAB).text
         assert active_tab == "Начинки"
- 
+  
