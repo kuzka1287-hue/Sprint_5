@@ -21,4 +21,4 @@ def driver(request):
     else:
         raise ValueError("Unsupported browser")
     yield driver
-    driver.quit() 
+    driver.quit()  
