@@ -39,4 +39,4 @@ def register_user(driver, name, email, password):
         WebDriverWait(driver, 5).until(EC.visibility_of_element_located(LoginPageLocators.LOGIN_BUTTON))
         return True
     except:
-        return False
+        return False 
