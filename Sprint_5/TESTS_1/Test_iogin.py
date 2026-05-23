@@ -49,4 +49,4 @@ class TestLogin:
         driver.find_element(*LoginPageLocators.FORGOT_PASSWORD_LINK).click()
         driver.find_element(*ForgotPasswordPageLocators.LOGIN_BUTTON).click()
         self.login(driver)
-        assert driver.find_element(*MainPageLocators.CONSTRUCTOR_BUTTON).is_displayed() 
+        assert driver.find_element(*MainPageLocators.CONSTRUCTOR_BUTTON).is_displayed()  
