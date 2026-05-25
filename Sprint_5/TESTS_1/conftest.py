@@ -4,8 +4,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from locators import MainPageLocators, LoginPageLocators
-from generators import generate_unique_email, generate_valid_password, register_user
+from locators import MainPageLocators, LoginPageLocators, RegisterPageLocators
+from generators import generate_unique_email, generate_valid_password
 from data import BASE_URL, TEST_USER_NAME
 
 def pytest_addoption(parser):
@@ -28,9 +28,19 @@ def driver(request):
     yield driver
     driver.quit()
 
+def register_user(driver, name, email, password):
+    driver.get(BASE_URL)
+    driver.find_element(*MainPageLocators.LOGIN_BUTTON_MAIN).click()
+    driver.find_element(*LoginPageLocators.REGISTER_LINK).click()
+    driver.find_element(*RegisterPageLocators.NAME_INPUT).send_keys(name)
+    driver.find_element(*RegisterPageLocators.EMAIL_INPUT).send_keys(email)
+    driver.find_element(*RegisterPageLocators.PASSWORD_INPUT).send_keys(password)
+    driver.find_element(*RegisterPageLocators.REGISTER_BUTTON).click()
+    WebDriverWait(driver, 5).until(EC.visibility_of_element_located(LoginPageLocators.LOGIN_BUTTON))
+    return True
+
 @pytest.fixture(scope="function")
 def registered_user(driver):
-    """Фикстура создаёт одного тестового пользователя и возвращает его данные"""
     email = generate_unique_email()
     password = generate_valid_password()
     register_user(driver, TEST_USER_NAME, email, password)
@@ -38,11 +48,10 @@ def registered_user(driver):
 
 @pytest.fixture(scope="function")
 def logged_in_user(driver, registered_user):
-    """Фикстура логинит созданного пользователя на главной странице"""
     driver.get(BASE_URL)
     driver.find_element(*MainPageLocators.LOGIN_BUTTON_MAIN).click()
     driver.find_element(*LoginPageLocators.EMAIL_INPUT).send_keys(registered_user["email"])
     driver.find_element(*LoginPageLocators.PASSWORD_INPUT).send_keys(registered_user["password"])
     driver.find_element(*LoginPageLocators.LOGIN_BUTTON).click()
     WebDriverWait(driver, 3).until(EC.visibility_of_element_located(MainPageLocators.CONSTRUCTOR_BUTTON))
-    return registered_user 
+    return registered_user
