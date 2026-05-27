@@ -58,4 +58,4 @@ def logged_in_user(driver: WebDriver, registered_user: Dict[str, str]) -> Dict[s
     driver.find_element(*LoginPageLocators.PASSWORD_INPUT).send_keys(registered_user["password"])
     driver.find_element(*LoginPageLocators.LOGIN_BUTTON).click()
     WebDriverWait(driver, 3).until(EC.visibility_of_element_located(MainPageLocators.CONSTRUCTOR_BUTTON))
-    return registered_user
+    return registered_user 
