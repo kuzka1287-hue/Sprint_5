@@ -1,5 +1,3 @@
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
 from locators import MainPageLocators
 from data import BASE_URL
 
@@ -22,4 +20,3 @@ class TestConstructor:
         driver.find_element(*MainPageLocators.FILLINGS_TAB).click()
         active_tab = driver.find_element(*MainPageLocators.ACTIVE_TAB).text
         assert active_tab == "Начинки"
- 
