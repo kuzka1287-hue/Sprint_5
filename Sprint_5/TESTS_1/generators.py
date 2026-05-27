@@ -18,4 +18,4 @@ def generate_valid_password() -> str:
 def generate_invalid_password() -> str:
     length = random.randint(1, 5)
     letters = string.ascii_letters + string.digits
-    return ''.join(random.choices(letters, k=length))
+    return ''.join(random.choices(letters, k=length)) 
