@@ -1,4 +1,3 @@
-import pytest
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from locators import RegisterPageLocators, MainPageLocators, LoginPageLocators
@@ -31,4 +30,3 @@ class TestRegistration:
         driver.find_element(*RegisterPageLocators.REGISTER_BUTTON).click()
         error = WebDriverWait(driver, 3).until(EC.visibility_of_element_located(RegisterPageLocators.PASSWORD_ERROR))
         assert error.is_displayed()
- 
