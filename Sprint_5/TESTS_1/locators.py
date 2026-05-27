@@ -31,3 +31,4 @@ class ForgotPasswordPageLocators:
 class PersonalAccountLocators:
     LOGOUT_BUTTON = (By.XPATH, "//button[text()='Выйти']")
     ORDER_HISTORY = (By.XPATH, "//a[text()='История заказов']")
+ 
