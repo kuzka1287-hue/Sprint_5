@@ -29,4 +29,4 @@ class TestRegistration:
         driver.find_element(*RegisterPageLocators.PASSWORD_INPUT).send_keys(password)
         driver.find_element(*RegisterPageLocators.REGISTER_BUTTON).click()
         error = WebDriverWait(driver, 3).until(EC.visibility_of_element_located(RegisterPageLocators.PASSWORD_ERROR))
-        assert error.is_displayed()
+        assert error.is_displayed() 
