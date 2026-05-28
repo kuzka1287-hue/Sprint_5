@@ -38,3 +38,4 @@ class TestLogin:
         driver.find_element(*LoginPageLocators.PASSWORD_INPUT).send_keys(registered_user["password"])
         driver.find_element(*LoginPageLocators.LOGIN_BUTTON).click()
         assert driver.find_element(*MainPageLocators.CONSTRUCTOR_BUTTON).is_displayed() 
+ 
