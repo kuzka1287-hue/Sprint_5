@@ -31,7 +31,7 @@ def driver(request: pytest.FixtureRequest) -> WebDriver:
     driver.quit()
 
 def register_user(driver: WebDriver, name: str, email: str, password: str) -> bool:
-    """Регистрирует нового пользователя через UI. Возвращает True при успехе."""
+    """Регистрирует пользователя через UI. Возвращает True при успехе."""
     driver.get(BASE_URL)
     driver.find_element(*MainPageLocators.LOGIN_BUTTON_MAIN).click()
     driver.find_element(*LoginPageLocators.REGISTER_LINK).click()
@@ -39,7 +39,6 @@ def register_user(driver: WebDriver, name: str, email: str, password: str) -> bo
     driver.find_element(*RegisterPageLocators.EMAIL_INPUT).send_keys(email)
     driver.find_element(*RegisterPageLocators.PASSWORD_INPUT).send_keys(password)
     driver.find_element(*RegisterPageLocators.REGISTER_BUTTON).click()
-    # Ожидаем появления кнопки «Войти» на странице логина
     WebDriverWait(driver, 5).until(EC.visibility_of_element_located(LoginPageLocators.LOGIN_BUTTON))
     return True
 
@@ -58,4 +57,4 @@ def logged_in_user(driver: WebDriver, registered_user: Dict[str, str]) -> Dict[s
     driver.find_element(*LoginPageLocators.PASSWORD_INPUT).send_keys(registered_user["password"])
     driver.find_element(*LoginPageLocators.LOGIN_BUTTON).click()
     WebDriverWait(driver, 3).until(EC.visibility_of_element_located(MainPageLocators.CONSTRUCTOR_BUTTON))
-    return registered_user 
+    return registered_user
